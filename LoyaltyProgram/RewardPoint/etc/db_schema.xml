@@ -1,0 +1,47 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="goal">
+        <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
+         <column xsi:type="varchar" name="goal_name" nullable="false" length="255" comment="Goal Name"/> 
+         <column xsi:type="varchar" name="goal_type" nullable="false" length="255" comment="Goal Type"/> 
+        <column xsi:type="int" name="goal_number" unsigned="true" nullable="false" comment="Goal Number"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="goal_id"/>
+        </constraint>
+    </table>
+    <table name="earn">
+        <column xsi:type="int" name="earn_id" unsigned="true" nullable="false" comment="Earn Id"/>
+        <column xsi:type="varchar" name="earn_name" nullable="false" length="255" comment="Earn Name"/> 
+        <column xsi:type="varchar" name="earn_description" nullable="false" length="255" comment="Earn Description"/> 
+        <column xsi:type="datetime" name="earn_start" nullable="false" comment="Start Time"/>
+        <column xsi:type="datetime" name="earn_end" nullable="false" comment="End Time"/>
+        <column xsi:type="boolean" name="earn_actived" nullable="false" comment="Active Status"/>
+        <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
+        <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false" comment="Web Id"/>
+        <column xsi:type="int" name="earn_priority" unsigned="true" nullable="false" comment="Earn Priority"/>
+        <column xsi:type="boolean" name="earn_overlap" nullable="false" comment="Is Overlap"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="earn_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GOAL_GOAL_ID_EARN_GOAL_ID" table="earn" column="goal_id" referenceTable="goal" referenceColumn="goal_id"/>
+        <constraint xsi:type="foreign" referenceId="STORE_WEBSITE_WEBSITE_ID_EARN_WEBSITE_ID" table="earn" column="website_id" referenceTable="store_website" referenceColumn="website_id"/>
+    </table>
+    <table name="vip">
+        <column xsi:type="int" name="vip_id" unsigned="true" nullable="false" comment="Vip Id"/>
+        <column xsi:type="varchar" name="vip_name" nullable="false" length="255" comment="Vip Name"/> 
+        <column xsi:type="varchar" name="vip_description" nullable="false" length="255" comment="Vip Description"/>
+        <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
+        <column xsi:type="float" name="vip_rate" unsigned="true" nullable="false" comment="Vip Rate"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="vip_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GOAL_GOAL_ID_VIP_GOAL_ID" table="vip" column="goal_id" referenceTable="goal" referenceColumn="goal_id"/>
+    </table>
+    <table name="current_point">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" comment="Custumer Id"/>
+        <column xsi:type="int" name="point" unsigned="true" nullable="false" comment="Customer Point"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_ENTITY_ID_CURRENT_POINT_ENTITY_ID" table="current_point" column="entity_id" referenceTable="customer_entity" referenceColumn="entity_id"/>
+    </table>
+</schema>

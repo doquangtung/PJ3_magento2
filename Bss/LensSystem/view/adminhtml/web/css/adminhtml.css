@@ -1,0 +1,7 @@
+.actions.dropdown.closable.active .dropdown-menu {
+        z-index: 300;
+}
+
+.file-uploader-button.action-default {
+    display: none;
+}

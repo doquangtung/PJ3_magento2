@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="LoyaltyProgram\RewardPoint\Api\Data\GridInterface" type="LoyaltyProgram\RewardPoint\Model\Goal" />
+
+    <virtualType name="LoyaltyProgram\RewardPoint\Model\ResourceModel\Goal\Goal\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">goal</argument>
+            <argument name="resourceModel" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Goal</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="rewardpoint_goal_listing_data_source" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Goal\Goal\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="LoyaltyProgram\RewardPoint\Model\ResourceModel\Activity\Activity\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">earn</argument>
+            <argument name="resourceModel" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Activity</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="rewardpoint_activity_listing_data_source" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Activity\Activity\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="LoyaltyProgram\RewardPoint\Model\ResourceModel\Vip\Vip\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vip</argument>
+            <argument name="resourceModel" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Vip</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="rewardpoint_vip_listing_data_source" xsi:type="string">LoyaltyProgram\RewardPoint\Model\ResourceModel\Vip\Vip\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="LoyaltyProgram\RewardPoint\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="LoyaltyProgram\RewardPoint\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">customLogHandler</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">LoyaltyProgram\RewardPoint\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

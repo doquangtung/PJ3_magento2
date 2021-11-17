@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="LoyaltyProgram_RewardPoint::rewardpoint" title="Reward Point" sortOrder="51">
+                    <resource id="LoyaltyProgram_RewardPoint::activity" title="Activity" sortOrder="10"/>
+                    <resource id="LoyaltyProgram_RewardPoint::goal" title="Goal" sortOrder="10"/>
+                    <resource id="LoyaltyProgram_RewardPoint::vip" title="Vip" sortOrder="10"/>
+                    <resource id="LoyaltyProgram_RewardPoint::rewardpoint_configuration" title="Configuration" sortOrder="99" />
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="LoyaltyProgram_RewardPoint::rewardpoint_config" title="Reward Point"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

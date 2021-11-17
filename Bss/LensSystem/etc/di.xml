@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Eav\Model\Entity\AttributeCache">
+        <arguments>
+            <argument name="unsupportedTypes" xsi:type="array">
+                <item name="lenssystem" xsi:type="string">lenssystem</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Ui\Component\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensOptions\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">RefGridFilterPool</argument>
+            <argument name="entityCollection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensSteps\Collection</argument>
+            <argument name="conditionCollection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensCondition\Collection</argument>
+            <argument name="fittingHeightCollection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensFittingHeight\Collection</argument>
+            <argument name="lensesCollection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensLenses\Collection</argument>
+        </arguments>
+    </type>
+    <virtualType name="RefGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="lenssystem_options_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensOptions\Grid\Collection</item>
+                <item name="lenssystem_steps_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensSteps\Grid\Collection</item>
+                <item name="lenssystem_condition_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensCondition\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Model\ResourceModel\LensOptions\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">lenssystem_options_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">lenssystem_options_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensOptions</argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Model\ResourceModel\LensSteps\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">lenssystem_steps_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">lenssystem_steps_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensSteps</argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Model\ResourceModel\LensCondition\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">lenssystem_condition_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">lenssystem_condition_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensCondition</argument>
+        </arguments>
+    </type>
+    <virtualType name="LensesSliderGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LensesSliderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\Lenses\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">FittingHeightSliderGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Bss\LensSystem\Model\ResourceModel\Lenses\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lenssystem_lenses</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\Lenses</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="lenssystem_lenses_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\Lenses\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="FittingHeightSliderGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FittingHeightSliderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensFittingHeight\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">FittingHeightSliderGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Bss\LensSystem\Model\ResourceModel\LensFittingHeight\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lenssystem_fittingheight</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensFittingHeight</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="lenssystem_fittingheight_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensFittingHeight\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Bss\LensSystem\Api\LensManagementInterface" type="Bss\LensSystem\Model\LensManagement"/>
+    <preference for="Bss\LensSystem\Api\Data\FittingHeightInterface" type="Bss\LensSystem\Model\LensFittingHeight" />
+    <preference for="Bss\LensSystem\Api\Data\FittingHeightSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Bss\LensSystem\Api\FittingHeightRepositoryInterface" type="Bss\LensSystem\Model\LensFittingHeightRepository" />
+    <preference for="Bss\LensSystem\Api\Data\LensesInterface" type="Bss\LensSystem\Model\Lenses" />
+    <preference for="Bss\LensSystem\Api\Data\LensesSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Bss\LensSystem\Api\LensesRepositoryInterface" type="Bss\LensSystem\Model\LensesRepository" />
+    <preference for="Bss\LensSystem\Api\Data\LensStepInterface" type="Bss\LensSystem\Model\LensSteps" />
+    <preference for="Bss\LensSystem\Api\Data\LensStepSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Bss\LensSystem\Api\LensStepRepositoryInterface" type="Bss\LensSystem\Model\LensStepRepository" />
+    <preference for="Bss\LensSystem\Api\Data\LensOptionsInterface" type="Bss\LensSystem\Model\LensOptions" />
+    <preference for="Bss\LensSystem\Api\Data\LensOptionsSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Bss\LensSystem\Api\LensOptionsRepositoryInterface" type="Bss\LensSystem\Model\LensOptionsRepository" />
+    <preference for="Bss\LensSystem\Api\Data\LensConditionInterface" type="Bss\LensSystem\Model\LensCondition" />
+    <preference for="Bss\LensSystem\Api\Data\LensConditionSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Bss\LensSystem\Api\LensConditionRepositoryInterface" type="Bss\LensSystem\Model\LensConditionRepository" />
+
+    <virtualType name="Bss\LensSystem\ReferenceImageUpload" type="Bss\LensSystem\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">bss/lenssystem/tooltipimage</argument>
+            <argument name="basePath" xsi:type="string">lenssystem/tooltipimage</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Bss\LensSystem\Controller\Adminhtml\Options\UploadTooltip">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Bss\LensSystem\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Controller\Adminhtml\Options\UploadImage">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Bss\LensSystem\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Bss\LensSystem\Controller\Adminhtml\Options\UploadImageRevert">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Bss\LensSystem\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="LensRulesFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LensRulesFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Bss\LensSystem\Model\ResourceModel\LensRule\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">LensRulesFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Bss\LensSystem\Model\ResourceModel\LensRule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lens_rules</argument>
+            <argument name="eventPrefix" xsi:type="string">lens_rules_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">lens_rules_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensRule</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="lens_rules_listing_data_source" xsi:type="string">Bss\LensSystem\Model\ResourceModel\LensRule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

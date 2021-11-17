@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="LoyaltyProgram_RewardPoint::rewardpoint" 
+        title="Reward Point" module="LoyaltyProgram_RewardPoint" 
+        sortOrder="51" 
+        resource="LoyaltyProgram_RewardPoint::rewardpoint"
+        />
+        <add id="LoyaltyProgram_RewardPoint::activity" 
+        title="Activity" module="LoyaltyProgram_RewardPoint" 
+        sortOrder="10" 
+        action="rewardpoint/Activity/Index" 
+        resource="LoyaltyProgram_RewardPoint::activity" 
+        parent="LoyaltyProgram_RewardPoint::rewardpoint"
+        />
+        <add id="LoyaltyProgram_RewardPoint::goal" 
+        title="Goal" module="LoyaltyProgram_RewardPoint" 
+        sortOrder="10" 
+        action="rewardpoint/Goal/Index" 
+        resource="LoyaltyProgram_RewardPoint::goal" 
+        parent="LoyaltyProgram_RewardPoint::rewardpoint"
+        />
+        <add id="LoyaltyProgram_RewardPoint::vip" 
+        title="Vip" module="LoyaltyProgram_RewardPoint" 
+        sortOrder="10" 
+        action="rewardpoint/Vip/Index" 
+        resource="LoyaltyProgram_RewardPoint::vip" 
+        parent="LoyaltyProgram_RewardPoint::rewardpoint"
+        />
+        <add id="LoyaltyProgram_RewardPoint::rewardpoint_configuration" 
+        title="Configuration" 
+        module="LoyaltyProgram_RewardPoint" 
+        sortOrder="99" 
+        parent="LoyaltyProgram_RewardPoint::rewardpoint" 
+        action="adminhtml/system_config/edit/section/rewardpoint" 
+        resource="LoyaltyProgram_RewardPoint::rewardpoint_configuration"/>
+    </menu>
+</config>
