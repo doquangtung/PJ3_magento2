@@ -1,7 +1,7 @@
 <?php
 namespace LoyaltyProgram\RewardPoint\Api\Data;
 
-interface GridInterface
+interface VipInterface
 {
     const ID = 'vip_id';
     const NAME = 'vip_name';

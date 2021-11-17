@@ -1,7 +1,7 @@
 <?php
 namespace LoyaltyProgram\RewardPoint\Api\Data;
 
-interface GridInterface
+interface ActivityInterface
 {
     const ID = 'earn_id';
     const NAME = 'earn_name';

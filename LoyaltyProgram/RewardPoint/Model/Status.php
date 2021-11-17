@@ -3,16 +3,39 @@
 namespace LoyaltyProgram\RewardPoint\Model;
 
 use Magento\Framework\Data\OptionSourceInterface;
+// use LoyaltyProgram\RewardPoint\Model\GoalFactory;
 
 class Status implements OptionSourceInterface
 {
+    // protected $goalFactory;
+    // public function __construct(
+    //     Context $context,
+    //     \LoyaltyProgram\RewardPoint\Model\GoalFactory $goalFactory,
+    //     array $data = array()
+    // )     {
+    //     $this->goalFactory = $goalFactory;
+    //     parent::__construct($context, $data);
+    // }
+    // public function getCollection()
+    // {
+    //     return $this->goalFactory->create()->getCollection();
+    // }
+    // public function getOptionGoal()
+    // {
+    //     $goals = $this->getCollection();
+    //     foreach ($goals as $goal)  {
+    //         $goalOptions[] = ['value' => $goal->getId(), 'label' => $goal->getName()];
+    //     }
+    //     return $goalOptions;
+    // }
+    
     /**
      * Get Grid row status type labels array.
      * @return array
      */
     public function getOptionArray()
     {
-        $options = ['2' => __('Point'),'1' => __('Order'),'0' => __('USD')];
+        $options = ['Point' => __('Point'),'Order' => __('Order'),'USD' => __('USD')];
         return $options;
     }
 

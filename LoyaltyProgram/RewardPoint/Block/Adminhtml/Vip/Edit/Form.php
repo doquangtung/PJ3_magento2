@@ -1,5 +1,5 @@
 <?php
-namespace LoyaltyProgram\RewardPoint\Block\Adminhtml\Goal\Edit;
+namespace LoyaltyProgram\RewardPoint\Block\Adminhtml\Vip\Edit;
 
 /**
  * Adminhtml Add New Row Form.
@@ -16,10 +16,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
-        \LoyaltyProgram\RewardPoint\Model\Status $options,
+        // \LoyaltyProgram\RewardPoint\Model\Status $options,
         array $data = []
     ) {
-        $this->_options = $options;
+        // $this->_options = $options;
         $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
@@ -49,7 +49,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'base_fieldset',
                 ['legend' => __('Edit Row'), 'class' => 'fieldset-wide']
             );
-            $fieldset->addField('goal_id', 'hidden', ['name' => 'goal_id']);
+            $fieldset->addField('vip_id', 'hidden', ['name' => 'vip_id']);
         } else {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
@@ -58,12 +58,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         }
 
         $fieldset->addField(
-            'goal_name',
+            'vip_name',
             'text',
             [
-                'name' => 'goal_name',
+                'name' => 'vip_name',
                 'label' => __('Name'),
-                'id' => 'goal_name',
+                'id' => 'vip_name',
                 'title' => __('Name'),
                 'class' => 'required-entry',
                 'required' => true,
@@ -71,27 +71,40 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
         $fieldset->addField(
-            'goal_type',
-            'select',
+            'vip_description',
+            'text',
             [
-                'name' => 'goal_type',
-                'label' => __('Type'),
-                'id' => 'goal_type',
-                'title' => __('Type'),
-                'values' => $this->_options->getOptionArray(),
+                'name' => 'vip_description',
+                'label' => __('Description'),
+                'id' => 'vip_description',
+                'title' => __('Description'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'goal_id',
+            'text',
+            [
+                'name' => 'goal_id',
+                'label' => __('Goal'),
+                'id' => 'goal_id',
+                'title' => __('Goal'),
+                // 'values' => $this->_options->getOptionGoal(),
                 'class' => 'status',
                 'required' => true,
             ]
         );
 
         $fieldset->addField(
-            'goal_number',
+            'vip_rate',
             'text',
             [
-                'name' => 'goal_number',
-                'label' => __('Number'),
-                'id' => 'goal_number',
-                'title' => __('Number'),
+                'name' => 'vip_rate',
+                'label' => __('Rate'),
+                'id' => 'vip_rate',
+                'title' => __('Rate'),
                 'class' => 'required-entry',
                 'required' => true,
             ]

@@ -1,6 +1,6 @@
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="goal">
-        <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
+        <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" identity="true" comment="Goal Id"/>
          <column xsi:type="varchar" name="goal_name" nullable="false" length="255" comment="Goal Name"/> 
          <column xsi:type="varchar" name="goal_type" nullable="false" length="255" comment="Goal Type"/> 
         <column xsi:type="int" name="goal_number" unsigned="true" nullable="false" comment="Goal Number"/>
@@ -9,7 +9,7 @@
         </constraint>
     </table>
     <table name="earn">
-        <column xsi:type="int" name="earn_id" unsigned="true" nullable="false" comment="Earn Id"/>
+        <column xsi:type="int" name="earn_id" unsigned="true" nullable="false" identity="true" comment="Earn Id"/>
         <column xsi:type="varchar" name="earn_name" nullable="false" length="255" comment="Earn Name"/> 
         <column xsi:type="varchar" name="earn_description" nullable="false" length="255" comment="Earn Description"/> 
         <column xsi:type="datetime" name="earn_start" nullable="false" comment="Start Time"/>
@@ -26,7 +26,7 @@
         <constraint xsi:type="foreign" referenceId="STORE_WEBSITE_WEBSITE_ID_EARN_WEBSITE_ID" table="earn" column="website_id" referenceTable="store_website" referenceColumn="website_id"/>
     </table>
     <table name="vip">
-        <column xsi:type="int" name="vip_id" unsigned="true" nullable="false" comment="Vip Id"/>
+        <column xsi:type="int" name="vip_id" unsigned="true" nullable="false" identity="true" comment="Vip Id"/>
         <column xsi:type="varchar" name="vip_name" nullable="false" length="255" comment="Vip Name"/> 
         <column xsi:type="varchar" name="vip_description" nullable="false" length="255" comment="Vip Description"/>
         <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
