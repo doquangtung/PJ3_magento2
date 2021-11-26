@@ -16,10 +16,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
-        // \LoyaltyProgram\RewardPoint\Model\Status $options,
+        \LoyaltyProgram\RewardPoint\Model\Status $options,
         array $data = []
     ) {
-        // $this->_options = $options;
+        $this->_options = $options;
         $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
@@ -85,13 +85,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 
         $fieldset->addField(
             'goal_id',
-            'text',
+            'select',
             [
                 'name' => 'goal_id',
                 'label' => __('Goal'),
                 'id' => 'goal_id',
                 'title' => __('Goal'),
-                // 'values' => $this->_options->getOptionGoal(),
+                'values' => $this->_options->getOptionGoal(),
                 'class' => 'status',
                 'required' => true,
             ]

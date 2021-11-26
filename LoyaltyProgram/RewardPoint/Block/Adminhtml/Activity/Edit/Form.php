@@ -1,5 +1,5 @@
 <?php
-namespace LoyaltyProgram\RewardPoint\Block\Adminhtml\Goal\Edit;
+namespace LoyaltyProgram\RewardPoint\Block\Adminhtml\Activity\Edit;
 
 /**
  * Adminhtml Add New Row Form.
@@ -49,7 +49,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'base_fieldset',
                 ['legend' => __('Edit Row'), 'class' => 'fieldset-wide']
             );
-            $fieldset->addField('goal_id', 'hidden', ['name' => 'goal_id']);
+            $fieldset->addField('earn_id', 'hidden', ['name' => 'earn_id']);
         } else {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
@@ -58,12 +58,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         }
 
         $fieldset->addField(
-            'goal_name',
+            'earn_name',
             'text',
             [
-                'name' => 'goal_name',
+                'name' => 'earn_name',
                 'label' => __('Name'),
-                'id' => 'goal_name',
+                'id' => 'earn_name',
                 'title' => __('Name'),
                 'class' => 'required-entry',
                 'required' => true,
@@ -71,27 +71,108 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
         $fieldset->addField(
-            'goal_type',
+            'earn_description',
+            'text',
+            [
+                'name' => 'earn_description',
+                'label' => __('Description'),
+                'id' => 'earn_description',
+                'title' => __('Description'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'earn_start',
+            'text',
+            [
+                'name' => 'earn_start',
+                'label' => __('Start'),
+                'id' => 'earn_start',
+                'title' => __('Start'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'earn_end',
+            'text',
+            [
+                'name' => 'earn_end',
+                'label' => __('End'),
+                'id' => 'earn_end',
+                'title' => __('End'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'earn_actived',
             'select',
             [
-                'name' => 'goal_type',
-                'label' => __('Type'),
-                'id' => 'goal_type',
-                'title' => __('Type'),
-                'values' => $this->_options->getOptionArray(),
+                'name' => 'earn_actived',
+                'label' => __('Active'),
+                'id' => 'earn_actived',
+                'title' => __('Active'),
+                'values' => $this->_options->getOptionTF(),
                 'class' => 'status',
                 'required' => true,
             ]
         );
 
         $fieldset->addField(
-            'goal_number',
+            'goal_id',
+            'select',
+            [
+                'name' => 'goal_id',
+                'label' => __('Goal'),
+                'id' => 'goal_id',
+                'title' => __('Goal'),
+                'values' => $this->_options->getOptionGoal(),
+                'class' => 'status',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'website_id',
+            'select',
+            [
+                'name' => 'goal_id',
+                'label' => __('Goal'),
+                'id' => 'goal_id',
+                'title' => __('Goal'),
+                'values' => $this->_options->getOptionWeb(),
+                'class' => 'status',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'earn_priority',
             'text',
             [
-                'name' => 'goal_number',
-                'label' => __('Number'),
-                'id' => 'goal_number',
-                'title' => __('Number'),
+                'name' => 'earn_priority',
+                'label' => __('Protity'),
+                'id' => 'earn_priority',
+                'title' => __('Protity'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'earn_overlap',
+            'select',
+            [
+                'name' => 'earn_overlap',
+                'label' => __('Overlap'),
+                'id' => 'earn_overlap',
+                'title' => __('Overlap'),
+                'values' => $this->_options-> getOptionTF(),
                 'class' => 'required-entry',
                 'required' => true,
             ]

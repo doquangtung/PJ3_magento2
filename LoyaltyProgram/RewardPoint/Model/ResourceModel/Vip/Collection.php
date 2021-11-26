@@ -15,7 +15,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->_init(
             'LoyaltyProgram\RewardPoint\Model\Vip',
-            'LoyaltyProgram\RewardPoint\ResourceModel\Vip'
+            'LoyaltyProgram\RewardPoint\Model\ResourceModel\Vip'
         );
     }
 }

@@ -85,7 +85,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="rewardpoint/goal/massdelete"/>
+                        <item name="url" xsi:type="url" path="rewardpoint/vip/massdelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete</item>
                             <item name="message" xsi:type="string" translate="true">Do you want to delete selected row record?</item>
@@ -128,7 +128,7 @@
        <column name="vip_name">
            <argument name="data" xsi:type="array">
                <item name="config" xsi:type="array">
-                   <item name="filter" xsi:type="string">textRange</item>
+                   <item name="filter" xsi:type="string">text</item>
                    <item name="label" xsi:type="string" translate="true">Name</item>
                    <item name="sortOrder" xsi:type="number">2</item>
                </item>
@@ -137,7 +137,6 @@
        <column name="vip_description" >
            <argument name="data" xsi:type="array">
                <item name="config" xsi:type="array">
-                   <item name="filter" xsi:type="string">textRange</item>
                    <item name="label" xsi:type="string" translate="true">Description</item>
                    <item name="sortOrder" xsi:type="number">3</item>
                </item>
@@ -146,7 +145,6 @@
        <column name="goal_id" >
            <argument name="data" xsi:type="array">
                <item name="config" xsi:type="array">
-                   <item name="filter" xsi:type="string">textRange</item>
                    <item name="label" xsi:type="string" translate="true">Goal ID</item>
                    <item name="sortOrder" xsi:type="number">4</item>
                </item>

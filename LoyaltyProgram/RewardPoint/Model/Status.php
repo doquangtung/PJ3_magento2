@@ -3,31 +3,28 @@
 namespace LoyaltyProgram\RewardPoint\Model;
 
 use Magento\Framework\Data\OptionSourceInterface;
-// use LoyaltyProgram\RewardPoint\Model\GoalFactory;
+use LoyaltyProgram\RewardPoint\Model\GoalFactory;
 
 class Status implements OptionSourceInterface
 {
-    // protected $goalFactory;
-    // public function __construct(
-    //     Context $context,
-    //     \LoyaltyProgram\RewardPoint\Model\GoalFactory $goalFactory,
-    //     array $data = array()
-    // )     {
-    //     $this->goalFactory = $goalFactory;
-    //     parent::__construct($context, $data);
-    // }
-    // public function getCollection()
-    // {
-    //     return $this->goalFactory->create()->getCollection();
-    // }
-    // public function getOptionGoal()
-    // {
-    //     $goals = $this->getCollection();
-    //     foreach ($goals as $goal)  {
-    //         $goalOptions[] = ['value' => $goal->getId(), 'label' => $goal->getName()];
-    //     }
-    //     return $goalOptions;
-    // }
+    protected $goalFactory;
+    public function __construct(
+        \LoyaltyProgram\RewardPoint\Model\GoalFactory $goalFactory
+    )     {
+        $this->goalFactory = $goalFactory;
+    }
+    public function getCollection()
+    {
+        return $this->goalFactory->create()->getCollection();
+    }
+    public function getOptionGoal()
+    {
+        $goals = $this->getCollection();
+        foreach ($goals as $goal)  {
+            $goalOptions[] = ['value' => $goal->getId(), 'label' => $goal->getName()];
+        }
+        return $goalOptions;
+    }
     
     /**
      * Get Grid row status type labels array.
@@ -38,7 +35,16 @@ class Status implements OptionSourceInterface
         $options = ['Point' => __('Point'),'Order' => __('Order'),'USD' => __('USD')];
         return $options;
     }
-
+    public function getOptionTF()
+    {
+        $options = ['1' => __('Yes'),'0' => __('No')];
+        return $options;
+    }
+    public function getOptionWeb()
+    {
+        $options = ['1' => __('Main Website'),'0' => __('Admin')];
+        return $options;
+    }
     /**
      * Get Grid row status labels array with empty value for option element.
      *
