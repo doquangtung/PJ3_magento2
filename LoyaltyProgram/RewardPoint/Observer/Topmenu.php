@@ -13,7 +13,7 @@ class Topmenu implements ObserverInterface
         $data = [
             'name'      => __('Activity Point'),
             'id'        => 'Activity',
-            'url'       => 'rewardpointfront/AllActivity/AllActivity',
+            'url'       => 'rewardpointfront/AllActivity/Index',
         ];
         $node = new Node($data, 'id', $tree, $menu);
         $menu->addChild($node);

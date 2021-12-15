@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <referenceBlock name="page.main.title" template="LoyaltyProgram_RewardPoint::titleallactivity.phtml">
+    </referenceBlock>
+    <referenceContainer name="content">
+        <block 
+        class="LoyaltyProgram\RewardPoint\Block\AllActivity" 
+        name="frontrewardpoint_allactivity" 
+        cacheable="false"
+        template="LoyaltyProgram_RewardPoint::allactivity.phtml" />
+    </referenceContainer>
+</page>

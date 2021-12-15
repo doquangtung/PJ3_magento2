@@ -84,6 +84,19 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         );
 
         $fieldset->addField(
+            'earn_point',
+            'text',
+            [
+                'name' => 'earn_point',
+                'label' => __('Point'),
+                'id' => 'earn_point',
+                'title' => __('Point'),
+                'class' => 'required-entry',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
             'earn_start',
             'text',
             [
@@ -131,21 +144,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Goal'),
                 'id' => 'goal_id',
                 'title' => __('Goal'),
-                'values' => $this->_options->getOptionGoal(),
-                'class' => 'status',
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'website_id',
-            'select',
-            [
-                'name' => 'goal_id',
-                'label' => __('Goal'),
-                'id' => 'goal_id',
-                'title' => __('Goal'),
-                'values' => $this->_options->getOptionWeb(),
+                'values' => $this->_options->getOptionGoalActivity(),
                 'class' => 'status',
                 'required' => true,
             ]

@@ -97,6 +97,20 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
 
+        $fieldset->addField(
+            'goal_use',
+            'select',
+            [
+                'name' => 'goal_use',
+                'label' => __('Use for'),
+                'id' => 'goal_use',
+                'title' => __('Use for'),
+                'values' => $this->_options->getOptionGoalUse(),
+                'class' => 'status',
+                'required' => true,
+            ]
+        );
+
         $form->setValues($model->getData());
         $form->setUseContainer(true);
         $this->setForm($form);

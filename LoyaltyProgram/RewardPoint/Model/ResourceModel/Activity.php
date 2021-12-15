@@ -38,4 +38,5 @@ class Activity extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('earn', 'earn_id');
     }
+
 }

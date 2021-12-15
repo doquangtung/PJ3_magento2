@@ -56,4 +56,14 @@ class Goal extends \Magento\Framework\Model\AbstractModel implements GridInterfa
     {
         return $this->setData(self::NUMBER, $goal_number);
     }
+
+    public function getUse()
+    {
+        return $this->getData(self::USE_FOR);
+    }
+
+    public function setUse($goal_use)
+    {
+        return $this->setData(self::USE_FOR, $goal_use);
+    }
 }

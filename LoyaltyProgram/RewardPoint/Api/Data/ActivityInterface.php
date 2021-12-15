@@ -6,11 +6,11 @@ interface ActivityInterface
     const ID = 'earn_id';
     const NAME = 'earn_name';
     const DESCRIPTION = 'earn_description';
+    const POINT = 'earn_point';
     const START = 'earn_start';
     const END = 'earn_end';
     const ACTIVE = 'earn_actived';
     const GOAL_ID = 'goal_id';
-    const WEB_ID = 'website_id';
     const PRIORITY = 'earn_priority';
     const OVERLAP = 'earn_overlap';
 
@@ -25,6 +25,10 @@ interface ActivityInterface
     public function getDescription();
 
     public function setDescription($earn_description);
+
+    public function getPoint();
+
+    public function setPoint($earn_point);
 
     public function getStart();
 
@@ -41,10 +45,6 @@ interface ActivityInterface
     public function getGoalId();
 
     public function setGoalId($goal_id);
-
-    public function getWebId();
-
-    public function setWebId($website_id);
 
     public function getPriority();
 

@@ -17,10 +17,20 @@ class Status implements OptionSourceInterface
     {
         return $this->goalFactory->create()->getCollection();
     }
-    public function getOptionGoal()
+    public function getOptionGoalActivity()
     {
         $goals = $this->getCollection();
         foreach ($goals as $goal)  {
+            if ($goal->getUse())
+            $goalOptions[] = ['value' => $goal->getId(), 'label' => $goal->getName()];
+        }
+        return $goalOptions;
+    }
+    public function getOptionGoalVip()
+    {
+        $goals = $this->getCollection();
+        foreach ($goals as $goal)  {
+            if (!$goal->getUse())
             $goalOptions[] = ['value' => $goal->getId(), 'label' => $goal->getName()];
         }
         return $goalOptions;
@@ -40,9 +50,9 @@ class Status implements OptionSourceInterface
         $options = ['1' => __('Yes'),'0' => __('No')];
         return $options;
     }
-    public function getOptionWeb()
+    public function getOptionGoalUse()
     {
-        $options = ['1' => __('Main Website'),'0' => __('Admin')];
+        $options = ['1' => __('Activity'),'0' => __('Vip')];
         return $options;
     }
     /**

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+  <event name="customer_register_success">
+    <observer name="customer_resgister_observer" instance="LoyaltyProgram\RewardPoint\Observer\SetPoint" />
+  </event>
+  <event name="sales_order_save_after">
+    <observer name="sales_order_observer" instance="LoyaltyProgram\RewardPoint\Observer\OrderManage" />
+  </event>
+</config>

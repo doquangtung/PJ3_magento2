@@ -7,6 +7,7 @@ interface GridInterface
     const NAME = 'goal_name';
     const TYPE = 'goal_type';
     const NUMBER = 'goal_number';
+    const USE_FOR = 'goal_use';
 
     public function getId();
 
@@ -23,5 +24,9 @@ interface GridInterface
     public function getNumber();
 
     public function setNumber($goal_number);
+
+    public function getUse();
+
+    public function setUse($goal_use);
 
 }

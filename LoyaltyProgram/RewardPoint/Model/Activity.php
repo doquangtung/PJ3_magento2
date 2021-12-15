@@ -47,6 +47,16 @@ class Activity extends \Magento\Framework\Model\AbstractModel implements Activit
         return $this->setData(self::DESCRIPTION, $earn_description);
     }
 
+    public function getPoint()
+    {
+        return $this->getData(self::POINT);
+    }
+
+    public function setPoint($earn_point)
+    {
+        return $this->setData(self::POINT, $earn_point);
+    }
+
     public function getStart()
     {
         return $this->getData(self::START);
@@ -85,16 +95,6 @@ class Activity extends \Magento\Framework\Model\AbstractModel implements Activit
     public function setGoalId($goal_id)
     {
         return $this->setData(self::GOAL_ID, $goal_id);
-    }
-
-    public function getWebId()
-    {
-        return $this->getData(self::WEB_ID);
-    }
-
-    public function setWebId($website_id)
-    {
-        return $this->setData(self::WEB_ID, $website_id);
     }
 
     public function getPriority()

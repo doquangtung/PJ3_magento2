@@ -91,7 +91,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Goal'),
                 'id' => 'goal_id',
                 'title' => __('Goal'),
-                'values' => $this->_options->getOptionGoal(),
+                'values' => $this->_options->getOptionGoalVip(),
                 'class' => 'status',
                 'required' => true,
             ]

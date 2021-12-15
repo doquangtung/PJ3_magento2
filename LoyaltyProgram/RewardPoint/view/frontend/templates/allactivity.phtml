@@ -1,0 +1,100 @@
+<p class = "my_content">There are all active activiy point</p>
+<div class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Point</th>
+                <th>Goal</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Process</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            /**
+             * @var \LoyaltyProgram\RewardPoint\Block\AllActivity $block
+             */
+
+            // echo $block->sayHello();
+
+            // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            // $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+            // $connection = $resource->getConnection();
+            // $tableEarn = $resource->getTableName('earn'); //gives table name
+            // $tableGoal = $resource->getTableName('goal'); //gives table name
+            
+
+            // $sqlEarn = $connection->select('*')->from($tableEarn)->join(
+            //     $tableGoal, 
+            //     $tableEarn . '.goal_id = ' . $tableGoal . '.goal_id'
+            // );
+            
+            // foreach ($connection->fetchAll($sqlEarn) as $row){   
+            // echo "<tr>";
+            // echo "<td>" . $row['earn_name'] . "</td>";
+            // echo "<td>" . $row['earn_description'] . "</td>";
+            // echo "<td>" . $row['earn_point'] . "</td>";
+            // if ($row['goal_type'] == "Order") $s_start = "Buy";
+            // else $s_start = "Spend";
+            // echo "<td>" . $s_start . " " . $row['goal_number'] . " " . $row['goal_type'] . "</td>";
+            // echo "<td>" . $row['earn_start'] . "</td>";
+            // echo "<td>" . $row['earn_end'] . "</td>";
+            // echo "</tr>"; 
+            // }
+
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "magento241";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            }
+            $sqlP = "SELECT * FROM earn, goal, process WHERE earn.goal_id = goal.goal_id AND earn.earn_id = process.earn_id";
+            $resultP = $conn->query($sqlP);
+            while($rowP = $resultP->fetch_assoc()){
+                $dataP[] = $rowP;
+                $ids[] = $rowP['earn_id'];
+            }
+            $sql = "SELECT * FROM earn, goal WHERE earn.goal_id = goal.goal_id";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                if ($row['earn_id'] != 10) {
+                if ($row['earn_actived']) {
+                echo "<tr>";
+                echo "<td>" . $row['earn_name'] . "</td>";
+                echo "<td>" . $row['earn_description'] . "</td>";
+                echo "<td>" . $row['earn_point'] . "</td>";
+                if ($row['goal_type'] == "Order") $s_start = "Buy";
+                else $s_start = "Spend";
+                echo "<td>" . $s_start . " " . $row['goal_number'] . " " . $row['goal_type'] . "</td>";
+                echo "<td>" . $row['earn_start'] . "</td>";
+                echo "<td>" . $row['earn_end'] . "</td>";
+                $check = array_search($row['earn_id'], $ids);
+                if (in_array($row['earn_id'], $ids)){
+                    echo "<td>" . $dataP[$check]['process_activity'] . "/" . $row['goal_number'] . "</td>";
+                } else  echo "<td> 0/" . $row['goal_number'] . "</td>";
+                echo "</tr>"; 
+                }
+            }
+            }
+            } else {
+            echo "0 results";
+            }
+            $conn->close();
+
+
+
+        ?>
+        </tbody>
+    </table>
+</div>

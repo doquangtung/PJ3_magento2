@@ -4,6 +4,7 @@
          <column xsi:type="varchar" name="goal_name" nullable="false" length="255" comment="Goal Name"/> 
          <column xsi:type="varchar" name="goal_type" nullable="false" length="255" comment="Goal Type"/> 
         <column xsi:type="int" name="goal_number" unsigned="true" nullable="false" comment="Goal Number"/>
+        <column xsi:type="boolean" name="goal_use" nullable="false" comment="Goal Use"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="goal_id"/>
         </constraint>
@@ -12,18 +13,17 @@
         <column xsi:type="int" name="earn_id" unsigned="true" nullable="false" identity="true" comment="Earn Id"/>
         <column xsi:type="varchar" name="earn_name" nullable="false" length="255" comment="Earn Name"/> 
         <column xsi:type="varchar" name="earn_description" nullable="false" length="255" comment="Earn Description"/> 
+        <column xsi:type="int" name="earn_point" unsigned="true" nullable="false" comment="Earn Point"/>
         <column xsi:type="datetime" name="earn_start" nullable="false" comment="Start Time"/>
         <column xsi:type="datetime" name="earn_end" nullable="false" comment="End Time"/>
         <column xsi:type="boolean" name="earn_actived" nullable="false" comment="Active Status"/>
         <column xsi:type="int" name="goal_id" unsigned="true" nullable="false" comment="Goal Id"/>
-        <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false" comment="Web Id"/>
         <column xsi:type="int" name="earn_priority" unsigned="true" nullable="false" comment="Earn Priority"/>
         <column xsi:type="boolean" name="earn_overlap" nullable="false" comment="Is Overlap"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="earn_id"/>
         </constraint>
         <constraint xsi:type="foreign" referenceId="GOAL_GOAL_ID_EARN_GOAL_ID" table="earn" column="goal_id" referenceTable="goal" referenceColumn="goal_id"/>
-        <constraint xsi:type="foreign" referenceId="STORE_WEBSITE_WEBSITE_ID_EARN_WEBSITE_ID" table="earn" column="website_id" referenceTable="store_website" referenceColumn="website_id"/>
     </table>
     <table name="vip">
         <column xsi:type="int" name="vip_id" unsigned="true" nullable="false" identity="true" comment="Vip Id"/>
@@ -43,5 +43,40 @@
             <column name="entity_id"/>
         </constraint>
         <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_ENTITY_ID_CURRENT_POINT_ENTITY_ID" table="current_point" column="entity_id" referenceTable="customer_entity" referenceColumn="entity_id"/>
+    </table>
+    <table name="current_vip">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" comment="Custumer Id"/>
+        <column xsi:type="varchar" name="vip" length="255" nullable="false" comment="Customer Vip"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_ENTITY_ID_CURRENT_VIP_ENTITY_ID" table="current_vip" column="entity_id" referenceTable="customer_entity" referenceColumn="entity_id"/>
+    </table>
+    <table name="history_point">
+        <column xsi:type="int" name="history_id" unsigned="true" nullable="false" identity="true" comment="History Id"/>
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" comment="Custumer Id"/>
+        <column xsi:type="int" name="history_point" unsigned="true" nullable="false" comment="History Point"/>
+        <column xsi:type="int" name="earn_id" unsigned="true" nullable="true" comment="Earn Id"/>
+        <column xsi:type="int" name="order_id" padding="10" unsigned="true" nullable="true" comment="Order Id"/>
+        <column xsi:type="datetime" name="history_date" nullable="false" comment="Modified Time"/>
+        <column xsi:type="varchar" name="history_reason" nullable="false" length="255" comment="History Reason"/> 
+        <column xsi:type="boolean" name="is_delete" nullable="false" comment="is Delete"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="history_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_ENTITY_ID_HISTORY_POINT_ENTITY_ID" table="history_point" column="entity_id" referenceTable="customer_entity" referenceColumn="entity_id"/>
+        <constraint xsi:type="foreign" referenceId="EARN_EARN_ID_HISTORY_POINT_EARN_ID" table="history_point" column="earn_id" referenceTable="earn" referenceColumn="earn_id"/>
+        <constraint xsi:type="foreign" referenceId="SALES_ORDER_ENTITY_ID_HISTORY_POINT_ORDER_ID" table="history_point" column="order_id" referenceTable="sales_order" referenceColumn="entity_id"/>
+    </table>
+    <table name="process">
+        <column xsi:type="int" name="process_id" unsigned="true" nullable="false" identity="true" comment="Process Id"/>
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" comment="Custumer Id"/>
+        <column xsi:type="int" name="earn_id" unsigned="true" nullable="true" comment="Earn Id"/>
+        <column xsi:type="int" name="process_activity" padding="10" unsigned="true" nullable="true" comment="Process"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="process_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ENTITY_ENTITY_ID_PROCESS_ENTITY_ID" table="process" column="entity_id" referenceTable="customer_entity" referenceColumn="entity_id"/>
+        <constraint xsi:type="foreign" referenceId="EARN_EARN_ID_PROCESS_EARN_ID" table="process" column="earn_id" referenceTable="earn" referenceColumn="earn_id"/>
     </table>
 </schema>
